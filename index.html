@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChinaMerchants | Your Gateway to Chinese Manufacturing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#c44536; --red-dark:#a5372b;
+  --navy:#0a2540; --navy-deep:#0f2b42;
+  --green:#07C160; --green-dark:#06a050;
+  --gray:#4a5568; --light:#f8fafc; --border:#e2e8f0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;color:#1a1a1a;line-height:1.6;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+h1,h2,h3{font-family:'Playfair Display',serif;}
+h1{font-size:3.2rem;line-height:1.15;color:var(--navy);}
+h2{font-size:2.2rem;color:var(--navy);text-align:center;margin-bottom:2.5rem;}
+h3{font-size:1.25rem;color:var(--navy);margin-bottom:0.75rem;}
+
+.btn-primary{display:inline-block;background:var(--red);color:white;padding:0.9rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.95rem;transition:background 0.2s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-primary:hover{background:var(--red-dark);}
+.btn-wechat{display:inline-block;background:var(--green);color:white;padding:0.9rem 1.8rem;border-radius:6px;text-decoration:none;font-weight:600;transition:background 0.2s;}
+.btn-wechat:hover{background:var(--green-dark);}
+
+/* HEADER */
+header{padding:1.2rem 0;background:white;box-shadow:0 1px 8px rgba(0,0,0,0.06);position:sticky;top:0;z-index:200;}
+.header-content{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--navy);text-decoration:none;}
+.logo span{color:var(--red);}
+nav a{margin-left:2rem;text-decoration:none;color:var(--gray);font-weight:500;font-size:0.95rem;transition:color 0.2s;}
+nav a:hover{color:var(--red);}
+nav .nav-cta{background:var(--red);color:white;padding:0.5rem 1.2rem;border-radius:5px;}
+nav .nav-cta:hover{background:var(--red-dark);color:white;}
+
+/* HERO */
+.hero{padding:4rem 0;background:linear-gradient(135deg,#f8fafc 0%,#e8eef5 100%);}
+.hero-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-text p{font-size:1.15rem;color:var(--gray);margin:1.25rem 0 2rem;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:0.75rem;}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);}
+.stat-number{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--red);display:block;}
+.stat-label{color:var(--gray);font-size:0.85rem;}
+.hero-image{border-radius:12px;overflow:hidden;height:420px;position:relative;box-shadow:0 20px 60px rgba(10,37,64,0.2);}
+.hero-image img{width:100%;height:100%;object-fit:cover;display:block;}
+.hero-image-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,37,64,0.75));padding:2rem 1.5rem 1.5rem;color:white;}
+.hero-image-overlay p{font-size:0.92rem;opacity:0.95;}
+
+/* TRUST BADGES */
+.trust-badges{padding:2rem 0;background:white;border-bottom:1px solid var(--border);}
+.badges{display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.badge{color:var(--gray);font-weight:500;font-size:0.95rem;display:flex;align-items:center;gap:0.5rem;}
+.badge::before{content:"✓";color:var(--red);font-weight:bold;}
+
+/* HOW IT WORKS */
+.how-it-works{padding:5rem 0;background:white;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:1rem;}
+.step{text-align:center;padding:2rem 1.5rem;background:var(--light);border-radius:10px;transition:transform 0.25s,box-shadow 0.25s;}
+.step:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.08);}
+.step-icon{width:52px;height:52px;background:var(--red);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;}
+.step p{color:var(--gray);font-size:0.95rem;}
+
+/* SERVICES */
+.services{padding:5rem 0;background:var(--light);}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.service-card{background:white;padding:2rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;}
+.service-card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.09);}
+.service-icon{font-size:2rem;margin-bottom:1rem;}
+.service-card p{color:var(--gray);margin-bottom:1.25rem;font-size:0.95rem;}
+.service-link{color:var(--red);font-weight:600;font-size:0.9rem;}
+
+/* WHY US */
+.why-us{padding:5rem 0;background:white;}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.feature{text-align:center;padding:2rem 1rem;}
+.feature-icon{font-size:2.5rem;margin-bottom:1rem;}
+.feature p{color:var(--gray);font-size:0.95rem;}
+
+/* CASE STUDIES */
+.case-studies{padding:5rem 0;background:var(--light);}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;}
+.case-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.case-content{padding:2rem;}
+.case-category{color:var(--red);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;}
+.case-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:1rem;}
+.case-content>p{color:var(--gray);font-size:0.95rem;}
+.case-results{background:var(--navy);color:white;padding:1rem 1.25rem;border-radius:6px;margin-top:1rem;font-size:0.9rem;}
+.case-results p{margin:0.3rem 0;}
+
+/* TESTIMONIALS */
+.testimonials{padding:5rem 0;background:white;}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.testimonial-card{background:var(--light);padding:2rem;border-radius:10px;position:relative;}
+.testimonial-card::before{content:"\201C";font-size:5rem;color:var(--red);opacity:0.15;position:absolute;top:-15px;left:12px;line-height:1;}
+.testimonial-text{font-style:italic;color:var(--gray);margin-bottom:1.25rem;font-size:0.95rem;}
+.testimonial-author{font-weight:700;color:var(--navy);}
+.testimonial-company{color:var(--red);font-size:0.85rem;}
+
+/* CONTACT */
+.contact-section{padding:5rem 0;background:var(--light);}
+.contact-container{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:start;}
+.contact-info{background:white;padding:2rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.contact-method{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--light);border-radius:6px;margin-bottom:1rem;}
+.contact-icon{font-size:1.75rem;}
+.wechat-box{text-align:center;margin-top:1.5rem;padding:1.5rem;border:2px solid var(--green);border-radius:10px;}
+.form-group{margin-bottom:1.25rem;}
+.form-group label{display:block;margin-bottom:0.4rem;font-weight:500;font-size:0.9rem;}
+.form-group input,
+.form-group textarea,
+.form-group select{width:100%;padding:0.7rem 1rem;border:1px solid var(--border);border-radius:6px;font-size:0.95rem;font-family:'DM Sans',sans-serif;transition:border-color 0.2s;background:white;}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{outline:none;border-color:var(--red);}
+
+/* FOOTER */
+footer{background:var(--navy-deep);color:white;padding:3rem 0 1.5rem;}
+.footer-content{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2rem;border-bottom:1px solid #2d4a6e;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:0.75rem;}
+.footer-logo span{color:var(--red);}
+.footer-links h4{margin-bottom:1rem;color:#cbd5e0;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.07em;}
+.footer-links a{display:block;color:#94a3b8;text-decoration:none;margin-bottom:0.55rem;font-size:0.9rem;transition:color 0.2s;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0;text-align:left;width:100%;}
+.footer-links a:hover{color:var(--red);}
+.wechat-footer-link{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:white;padding:0.5rem 1rem;border-radius:5px;text-decoration:none;margin-top:1rem;font-size:0.9rem;transition:background 0.2s;}
+.wechat-footer-link:hover{background:var(--green-dark);}
+.copyright{text-align:center;padding-top:1.5rem;color:#64748b;font-size:0.85rem;}
+
+/* ===== MODAL SYSTEM ===== */
+.modal-overlay{
+  display:none;
+  position:fixed;inset:0;
+  background:rgba(10,37,64,0.72);
+  z-index:9999;
+  justify-content:center;
+  align-items:flex-start;
+  padding:40px 16px;
+  overflow-y:auto;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:white;border-radius:14px;
+  max-width:660px;width:100%;
+  box-shadow:0 30px 80px rgba(0,0,0,0.35);
+  animation:modalIn 0.22s ease;
+  margin:auto;
+  position:relative;
+}
+@keyframes modalIn{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+.modal-header{
+  padding:1.75rem 2rem 1.25rem;
+  border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:flex-start;
+  border-radius:14px 14px 0 0;
+}
+.modal-header h2{text-align:left;margin-bottom:0.2rem;font-size:1.55rem;}
+.modal-tag{color:var(--red);font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.07em;}
+.modal-close{width:36px;height:36px;border-radius:50%;border:none;background:var(--light);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;margin-left:1rem;line-height:1;}
+.modal-close:hover{background:var(--border);}
+.modal-body{padding:1.75rem 2rem 2rem;}
+.modal-body p{color:var(--gray);margin-bottom:1rem;font-size:0.95rem;line-height:1.75;}
+.modal-body h4{color:var(--navy);margin:1.4rem 0 0.65rem;font-family:'Playfair Display',serif;font-size:1.05rem;}
+.modal-list{list-style:none;margin-bottom:1rem;}
+.modal-list li{padding:0.5rem 0;color:var(--gray);border-bottom:1px solid var(--border);font-size:0.95rem;}
+.modal-list li:last-child{border-bottom:none;}
+.modal-list li::before{content:"✓  ";color:var(--red);font-weight:bold;}
+.modal-highlight{background:var(--light);border-left:3px solid var(--red);padding:0.9rem 1.2rem;border-radius:0 6px 6px 0;margin:1.2rem 0;font-size:0.93rem;color:var(--gray);}
+.modal-cta{margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid var(--border);text-align:center;}
+.modal-cta p{margin-bottom:1rem;font-weight:500;color:var(--navy);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  h1{font-size:2.3rem;} h2{font-size:1.8rem;}
+  .header-content{flex-direction:column;gap:1rem;}
+  nav a{margin:0 0.75rem;}
+  .hero-content{grid-template-columns:1fr;gap:2.5rem;}
+  .hero-image{height:280px;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .service-grid{grid-template-columns:1fr 1fr;}
+  .features{grid-template-columns:1fr;}
+  .case-grid{grid-template-columns:1fr;}
+  .testimonial-grid{grid-template-columns:1fr;}
+  .contact-container{grid-template-columns:1fr;}
+  .footer-content{grid-template-columns:1fr 1fr;gap:2rem;}
+}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr;}
+  .service-grid{grid-template-columns:1fr;}
+  .footer-content{grid-template-columns:1fr;}
+  .hero-btns{flex-direction:column;}
+  nav{display:flex;flex-wrap:wrap;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container header-content">
+    <a href="#" class="logo">China<span>Merchants</span></a>
+    <nav>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#services">Services</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Your Trusted Gateway to Chinese Manufacturers</h1>
+      <p>We connect global businesses with vetted Chinese suppliers, manage quality control, and handle logistics — so you can scale with confidence.</p>
+      <div class="hero-btns">
+        <a href="mailto:contact@chinamerchants.info?subject=Start%20Sourcing%20Inquiry" class="btn-primary">&#128231; Start Sourcing</a>
+        <a href="#contact" class="btn-wechat">&#128172; WeChat Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Vetted Suppliers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Success Rate</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=80&fit=crop" alt="Bridge connecting China to the world" loading="eager" onerror="this.style.display='none'">
+      <div class="hero-image-overlay">
+        <p>&#127751; Bridging your business to China &mdash; on the ground in Shenzhen &amp; Guangzhou</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="trust-badges">
+  <div class="container badges">
+    <span class="badge">Alibaba Verified Partners</span>
+    <span class="badge">ISO Certified Suppliers</span>
+    <span class="badge">On-the-ground in Shenzhen</span>
+    <span class="badge">5,000+ Successful Shipments</span>
+    <span class="badge">Since 2008</span>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="how-it-works">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">1</div>
+        <h3>Submit Requirements</h3>
+        <p>Tell us what you need &mdash; product specs, budget, and quantities.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">2</div>
+        <h3>Supplier Matching</h3>
+        <p>We match you with pre-vetted factories that meet your exact needs.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">3</div>
+        <h3>Sampling &amp; Negotiation</h3>
+        <p>We facilitate communication and negotiate the best terms for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">4</div>
+        <h3>Production &amp; Logistics</h3>
+        <p>We inspect quality and handle shipping door-to-door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card" onclick="openModal('modal-supplier')">
+        <div class="service-icon">&#128270;</div>
+        <h3>Supplier Verification</h3>
+        <p>We audit factories in person so you never get scammed. Legal checks, capacity assessment, and background verification.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+      <div class="service-card" onclick="openModal('modal-qc')">
+        <div class="service-icon">&#9989;</div>
+        <h3>Quality Control</h3>
+        <p>On-site inspections during production and before shipment. ISO-standard quality checks with detailed reports.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+      <div class="service-card" onclick="openModal('modal-sourcing')">
+        <div class="service-icon">&#129309;</div>
+        <h3>Sourcing &amp; Negotiation</h3>
+        <p>We speak Mandarin and understand local business culture. Get the best prices without the language barrier.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+      <div class="service-card" onclick="openModal('modal-logistics')">
+        <div class="service-icon">&#128674;</div>
+        <h3>Logistics &amp; Shipping</h3>
+        <p>Door-to-door freight management. Air, sea, or express &mdash; we handle customs and documentation.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+      <div class="service-card" onclick="openModal('modal-ip')">
+        <div class="service-icon">&#128737;</div>
+        <h3>IP Protection</h3>
+        <p>Secure your designs and trademarks. We help you navigate Chinese IP laws and sign NDAs with factories.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+      <div class="service-card" onclick="openModal('modal-custom')">
+        <div class="service-icon">&#127912;</div>
+        <h3>Product Customization</h3>
+        <p>From concept to finished product. Prototyping, mold creation, and custom packaging handled end-to-end.</p>
+        <span class="service-link">Learn more &rarr;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us" class="why-us">
+  <div class="container">
+    <h2>Why Choose ChinaMerchants?</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">&#127464;&#127475;</div>
+        <h3>On-the-Ground Team</h3>
+        <p>We're based in Shenzhen and Guangzhou &mdash; right where the factories are. No third-party outsourcing.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128483;</div>
+        <h3>No Language Barrier</h3>
+        <p>Our team handles all Mandarin communication. You deal with us in English, always.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128269;</div>
+        <h3>Rigorous Vetting</h3>
+        <p>We reject 70% of factories that apply to our network. Only the best make the cut.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies" class="case-studies">
+  <div class="container">
+    <h2>Success Stories</h2>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-content">
+          <div class="case-category">Electronics Manufacturing</div>
+          <div class="case-title">US Startup Saves 40% on Production Costs</div>
+          <p>A San Francisco-based tech startup needed a reliable manufacturer for their smart home device. We connected them with a Shenzhen factory, negotiated pricing, and managed quality control.</p>
+          <div class="case-results">
+            <p>&#9989; 40% cost reduction vs US manufacturing</p>
+            <p>&#9989; 10,000 units produced in 8 weeks</p>
+            <p>&#9989; Zero quality issues at launch</p>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-content">
+          <div class="case-category">Apparel &amp; Textiles</div>
+          <div class="case-title">Australian Fashion Brand Scales 300%</div>
+          <p>An emerging sustainable fashion brand needed ethical manufacturers in China. We vetted 15 factories and found the perfect partner for organic cotton production.</p>
+          <div class="case-results">
+            <p>&#9989; 300% production scale in 6 months</p>
+            <p>&#9989; GOTS-certified factory partnership</p>
+            <p>&#9989; $200K saved in first year</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"ChinaMerchants made sourcing from China actually enjoyable. They handled everything &mdash; from factory visits to quality checks. I can finally sleep at night knowing my supply chain is solid."</p>
+        <div class="testimonial-author">Michael Chen</div>
+        <div class="testimonial-company">Founder, TechFlow Solutions</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The team's on-ground presence in Shenzhen saved us from a bad factory deal. They spotted issues during the audit that we would have never caught remotely. Worth every penny."</p>
+        <div class="testimonial-author">Sarah Williams</div>
+        <div class="testimonial-company">COO, EcoHome Products</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"We were nervous about IP protection, but ChinaMerchants helped us navigate Chinese contracts and NDAs. Our designs are safe and production is running smoothly."</p>
+        <div class="testimonial-author">David Park</div>
+        <div class="testimonial-company">CEO, Innovate Labs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <h2>Get Your Free Consultation</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Connect With Us</h3>
+        <div class="contact-method">
+          <div class="contact-icon">&#128231;</div>
+          <div>
+            <strong>Email</strong><br>
+            <a href="mailto:contact@chinamerchants.info" style="color:var(--navy);">contact@chinamerchants.info</a>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">&#128172;</div>
+          <div>
+            <strong>WeChat</strong><br>
+            <span style="color:var(--green);font-weight:600;">wxid_epue98357w4q12</span>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon">&#128205;</div>
+          <div>
+            <strong>Office</strong><br>
+            Shenzhen &amp; Guangzhou, China
+          </div>
+        </div>
+        <div class="wechat-box">
+          <div style="font-size:2.4rem;margin-bottom:0.5rem;">&#128172;</div>
+          <h4 style="color:var(--green);margin-bottom:0.5rem;font-family:'DM Sans',sans-serif;font-size:1rem;">Chat on WeChat</h4>
+          <p style="font-size:1.05rem;margin-bottom:0.75rem;">ID: <strong style="background:#f0f0f0;padding:0.25rem 0.75rem;border-radius:4px;">wxid_epue98357w4q12</strong></p>
+          <p style="color:var(--gray);font-size:0.9rem;">Copy the ID and paste in WeChat to add us</p>
+        </div>
+      </div>
+
+      <div>
+        <h3>Send Us a Message</h3>
+        <!-- Replace your-form-id with your actual Formspree ID -->
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <input type="hidden" name="_replyto" value="contact@chinamerchants.info">
+          <input type="hidden" name="_subject" value="New Inquiry from ChinaMerchants.info">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required placeholder="John Smith">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@company.com">
+          </div>
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company" placeholder="Your Company">
+          </div>
+          <div class="form-group">
+            <label for="product">Product Interest *</label>
+            <select id="product" name="product" required>
+              <option value="">Select a category</option>
+              <option value="electronics">Electronics</option>
+              <option value="apparel">Apparel &amp; Textiles</option>
+              <option value="home-goods">Home Goods</option>
+              <option value="machinery">Machinery</option>
+              <option value="packaging">Packaging</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your needs *</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Product description, quantity, budget, timeline..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Preferred contact</label>
+            <div style="display:flex;gap:2rem;margin-top:0.25rem;">
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+                <input type="radio" name="contact_method" value="email" checked> &#128231; Email
+              </label>
+              <label style="display:flex;align-items:center;gap:0.4rem;cursor:pointer;">
+                <input type="radio" name="contact_method" value="wechat"> &#128172; WeChat
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;font-size:1rem;padding:1rem;">Get Free Quote</button>
+          <p style="margin-top:0.75rem;font-size:0.85rem;color:#718096;text-align:center;">&#10003; We respond within 24 hours</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <div class="footer-logo">China<span>Merchants</span></div>
+        <p style="color:#94a3b8;margin-bottom:1rem;font-size:0.9rem;">Your trusted partner for China sourcing since 2008.</p>
+        <p style="color:#94a3b8;font-size:0.9rem;">
+          &#128205; Shenzhen &amp; Guangzhou, China<br>
+          &#128231; <a href="mailto:contact@chinamerchants.info" style="color:#94a3b8;">contact@chinamerchants.info</a>
+        </p>
+        <a href="#contact" class="wechat-footer-link">&#128172; WeChat: wxid_epue98357w4q12</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a onclick="openModal('modal-supplier')">Supplier Verification</a>
+        <a onclick="openModal('modal-qc')">Quality Control</a>
+        <a onclick="openModal('modal-sourcing')">Sourcing &amp; Negotiation</a>
+        <a onclick="openModal('modal-logistics')">Logistics &amp; Shipping</a>
+        <a onclick="openModal('modal-ip')">IP Protection</a>
+        <a onclick="openModal('modal-custom')">Product Customization</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a onclick="openModal('modal-about')">About Us</a>
+        <a onclick="openModal('modal-faq')">FAQ</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Connect</h4>
+        <a href="mailto:contact@chinamerchants.info">&#128231; Email Us</a>
+        <a href="#contact">&#128172; WeChat</a>
+        <a href="https://www.linkedin.com/in/china-merchants-50623b3b2/" target="_blank" rel="noopener">&#128279; LinkedIn</a>
+        <a onclick="openModal('modal-privacy')">Privacy Policy</a>
+        <a onclick="openModal('modal-terms')">Terms of Service</a>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2026 ChinaMerchants. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Modal: Supplier Verification -->
+<div class="modal-overlay" id="modal-supplier">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>Supplier Verification</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-supplier')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Finding the right factory is the most critical step in China sourcing &mdash; and the most risky if done wrong. Our supplier verification service protects you from scams, substandard manufacturers, and costly mistakes.</p>
+      <div class="modal-highlight">We physically visit every factory before recommending them. No exceptions.</div>
+      <h4>What's Included</h4>
+      <ul class="modal-list">
+        <li>Legal registration &amp; business licence check</li>
+        <li>In-person factory audit (capacity, equipment, workforce)</li>
+        <li>Product sample assessment</li>
+        <li>References from existing customers</li>
+        <li>Financial stability screening</li>
+        <li>Written verification report in 5&ndash;7 business days</li>
+      </ul>
+      <h4>Why It Matters</h4>
+      <p>Over 30% of first-time China importers lose money due to fraudulent or incompetent suppliers. Our vetting process has a zero-scam track record across 5,000+ matched partnerships.</p>
+      <div class="modal-cta">
+        <p>Ready to find a verified supplier?</p>
+        <a href="mailto:contact@chinamerchants.info?subject=Supplier%20Verification%20Inquiry" class="btn-primary">&#128231; Email Us Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Quality Control -->
+<div class="modal-overlay" id="modal-qc">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>Quality Control</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-qc')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Quality issues discovered after shipment are expensive &mdash; or impossible &mdash; to fix. Our quality control service catches problems at the source, before they become your problem.</p>
+      <div class="modal-highlight">Our inspectors are based on-site in China, meaning faster response times and real local expertise.</div>
+      <h4>Inspection Types</h4>
+      <ul class="modal-list">
+        <li>Pre-production inspection (raw materials &amp; components)</li>
+        <li>During production (DUPRO) &mdash; catches issues mid-run</li>
+        <li>Pre-shipment inspection (finished goods)</li>
+        <li>Container loading supervision</li>
+      </ul>
+      <h4>What You Receive</h4>
+      <p>A detailed inspection report with photos, measurements, defect classification (critical / major / minor), and a clear pass/fail recommendation &mdash; all within 24 hours of inspection.</p>
+      <div class="modal-cta">
+        <p>Protect your order quality.</p>
+        <a href="mailto:contact@chinamerchants.info?subject=Quality%20Control%20Inquiry" class="btn-primary">&#128231; Book an Inspection</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Sourcing & Negotiation -->
+<div class="modal-overlay" id="modal-sourcing">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>Sourcing &amp; Negotiation</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-sourcing')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Chinese business culture is relationship-driven. Prices are rarely the first quote. Our native Mandarin-speaking team negotiates on your behalf &mdash; getting you deals you simply can't access as a foreign buyer.</p>
+      <div class="modal-highlight">On average, clients save 15&ndash;35% vs. going direct thanks to our negotiation leverage and supplier relationships.</div>
+      <h4>Our Sourcing Process</h4>
+      <ul class="modal-list">
+        <li>Product brief analysis &amp; category research</li>
+        <li>Shortlist of 3&ndash;5 qualified manufacturers</li>
+        <li>RFQ management in Mandarin</li>
+        <li>Price, MOQ, and payment term negotiation</li>
+        <li>Contract drafting and review</li>
+        <li>Ongoing supplier relationship management</li>
+      </ul>
+      <div class="modal-cta">
+        <p>Let us find and negotiate your next supplier.</p>
+        <a href="mailto:contact@chinamerchants.info?subject=Sourcing%20Inquiry" class="btn-primary">&#128231; Start Sourcing</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Logistics -->
+<div class="modal-overlay" id="modal-logistics">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>Logistics &amp; Shipping</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-logistics')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Getting goods from a Chinese factory to your door involves customs, freight forwarders, documentation, and coordination across time zones. We handle all of it.</p>
+      <div class="modal-highlight">We have pre-negotiated rates on major shipping lanes &mdash; savings we pass directly to you.</div>
+      <h4>Shipping Options</h4>
+      <ul class="modal-list">
+        <li>Sea freight &mdash; FCL (Full Container) or LCL (Less than Container)</li>
+        <li>Air freight &mdash; fast turnaround for high-value or urgent goods</li>
+        <li>Express courier (DHL, FedEx, UPS) for samples and small orders</li>
+        <li>Rail freight &mdash; cost-effective for Europe-bound cargo</li>
+      </ul>
+      <h4>Documentation We Handle</h4>
+      <ul class="modal-list">
+        <li>Commercial invoice &amp; packing list</li>
+        <li>Bill of lading / air waybill</li>
+        <li>Certificate of origin</li>
+        <li>Customs declarations (China export + destination import)</li>
+      </ul>
+      <div class="modal-cta">
+        <p>Get a shipping quote for your next order.</p>
+        <a href="mailto:contact@chinamerchants.info?subject=Logistics%20Inquiry" class="btn-primary">&#128231; Get a Shipping Quote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: IP Protection -->
+<div class="modal-overlay" id="modal-ip">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>IP Protection</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-ip')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Intellectual property theft is a real risk in China manufacturing &mdash; but it's preventable with the right legal and contractual structures in place.</p>
+      <div class="modal-highlight">China operates on a first-to-file trademark system. If you haven't registered your brand in China, someone else can &mdash; and often does.</div>
+      <h4>How We Protect You</h4>
+      <ul class="modal-list">
+        <li>NDA drafting in English and Mandarin (legally enforceable in China)</li>
+        <li>Guidance on China trademark registration</li>
+        <li>Split manufacturing strategy</li>
+        <li>Mould ownership agreements</li>
+        <li>Factory confidentiality agreements</li>
+        <li>IP audit before production begins</li>
+      </ul>
+      <div class="modal-cta">
+        <p>Protect your product before it's copied.</p>
+        <a href="mailto:contact@chinamerchants.info?subject=IP%20Protection%20Inquiry" class="btn-primary">&#128231; Talk to Us About IP</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Product Customization -->
+<div class="modal-overlay" id="modal-custom">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Service</div><h2>Product Customization</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-custom')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Whether you're creating a brand-new product or adding your branding to an existing one, we guide you through every step &mdash; from concept to packaged goods at your door.</p>
+      <div class="modal-highlight">We've helped 200+ brands bring custom products to market with average lead times of 60&ndash;90 days from concept to first production run.</div>
+      <h4>Customization Services</h4>
+      <ul class="modal-list">
+        <li>Product concept development &amp; feasibility</li>
+        <li>CAD design &amp; engineering drawings</li>
+        <li>Prototype &amp; sample creation</li>
+        <li>Mould / tooling development</li>
+        <li>OEM &amp; ODM manufacturing</li>
+        <li>Custom packaging &amp; branding (boxes, labels, inserts)</li>
+        <li>Regulatory compliance (CE, FCC, RoHS)</li>
+      </ul>
+      <div class="modal-cta">
+        <p>Have a product idea? Let's make it real.</p>
+        <a href="mailto:contact@chinamerchants.info?subject=Product%20Customization%20Inquiry" class="btn-primary">&#128231; Start Your Project</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: About Us -->
+<div class="modal-overlay" id="modal-about">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Company</div><h2>About ChinaMerchants</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-about')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p>Founded in 2008, ChinaMerchants was built by importers, for importers. After years of watching Western businesses get burned by unreliable factories and language barriers, we decided to build the bridge we always wished existed.</p>
+      <p>Today we're a team of 25 sourcing professionals, logistics coordinators, and quality inspectors spread across Shenzhen, Guangzhou, Shanghai, and Yiwu &mdash; every one of us with years of on-the-ground China experience.</p>
+      <div class="modal-highlight">We're not a middleman &mdash; we're your local team in China, working exclusively in your interest.</div>
+      <h4>Our Numbers</h4>
+      <ul class="modal-list">
+        <li>500+ vetted suppliers in our network</li>
+        <li>5,000+ successful shipments managed</li>
+        <li>98% client satisfaction rate</li>
+        <li>15+ years of on-the-ground experience</li>
+        <li>Clients in 30+ countries</li>
+      </ul>
+      <div class="modal-cta">
+        <p>Ready to work with us?</p>
+        <a href="mailto:contact@chinamerchants.info?subject=General%20Inquiry" class="btn-primary">&#128231; Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: FAQ -->
+<div class="modal-overlay" id="modal-faq">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Resources</div><h2>Frequently Asked Questions</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-faq')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <h4>How much does it cost to work with you?</h4>
+      <p>We offer a free initial consultation. Sourcing projects involve a flat project fee; quality inspections are priced per inspection day. Email <a href="mailto:contact@chinamerchants.info" style="color:var(--red);">contact@chinamerchants.info</a> for a custom quote.</p>
+      <h4>What's the minimum order quantity (MOQ)?</h4>
+      <p>MOQs are set by factories. They vary widely &mdash; some accept 100 units, others require 1,000+. We help you negotiate MOQs down wherever possible.</p>
+      <h4>How long does sourcing take?</h4>
+      <p>Standard products: 2&ndash;4 weeks to identify and vet suppliers. Custom products with prototyping: 6&ndash;12 weeks before production begins.</p>
+      <h4>Do you handle first-time importers?</h4>
+      <p>Absolutely. Many clients are importing from China for the first time. We guide you step-by-step and explain the process clearly in plain English.</p>
+      <h4>Do you work on WeChat?</h4>
+      <p>Yes. Our WeChat ID is <strong>wxid_epue98357w4q12</strong>. You can also reach us at <a href="mailto:contact@chinamerchants.info" style="color:var(--red);">contact@chinamerchants.info</a>.</p>
+      <h4>What industries do you cover?</h4>
+      <p>Electronics, apparel, home goods, furniture, machinery, packaging, automotive, medical devices, toys, and more. If it's made in China, we can source it.</p>
+      <div class="modal-cta">
+        <p>Still have questions?</p>
+        <a href="mailto:contact@chinamerchants.info?subject=FAQ%20Question" class="btn-primary">&#128231; Ask Us Directly</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Legal</div><h2>Privacy Policy</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-privacy')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p><em>Last updated: January 2026</em></p>
+      <h4>Information We Collect</h4>
+      <p>When you contact us via our website form or email, we collect your name, email address, company name, and message content. We do not collect payment information through this website.</p>
+      <h4>How We Use Your Information</h4>
+      <p>Your information is used solely to respond to your inquiry and provide our services. We do not sell, trade, or share your personal data with third parties for marketing purposes.</p>
+      <h4>Data Storage</h4>
+      <p>Contact form submissions are processed via Formspree. Email communications are retained for business record purposes. WeChat messages are subject to WeChat's own privacy policy.</p>
+      <h4>Your Rights</h4>
+      <p>You may request access to, correction of, or deletion of your personal data at any time by contacting us.</p>
+      <h4>Contact</h4>
+      <p>For privacy-related questions, email <a href="mailto:contact@chinamerchants.info" style="color:var(--red);">contact@chinamerchants.info</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Terms of Service -->
+<div class="modal-overlay" id="modal-terms">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-tag">Legal</div><h2>Terms of Service</h2></div>
+      <button class="modal-close" onclick="closeModal('modal-terms')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <p><em>Last updated: January 2026</em></p>
+      <h4>Services</h4>
+      <p>ChinaMerchants provides sourcing, verification, quality control, logistics, and consulting services relating to Chinese manufacturing. All services are subject to a separate service agreement signed prior to engagement.</p>
+      <h4>No Guarantee of Outcome</h4>
+      <p>While we maintain a 98% success rate, we cannot guarantee specific outcomes such as pricing, lead times, or product quality as these are ultimately determined by third-party manufacturers.</p>
+      <h4>Confidentiality</h4>
+      <p>All client information and product details shared with ChinaMerchants are treated as strictly confidential and will not be disclosed to third parties without your consent.</p>
+      <h4>Payment Terms</h4>
+      <p>Payment terms are specified in individual service agreements. Generally, a 50% deposit is required before work begins, with the balance due upon completion.</p>
+      <h4>Limitation of Liability</h4>
+      <p>ChinaMerchants' liability is limited to the fees paid for the specific service. We are not liable for losses arising from factory non-performance, customs delays, or force majeure events.</p>
+      <h4>Governing Law</h4>
+      <p>These terms are governed by the laws of the People's Republic of China. Disputes will be resolved through good-faith negotiation before pursuing formal legal remedies.</p>
+      <h4>Contact</h4>
+      <p>For any questions, contact <a href="mailto:contact@chinamerchants.info" style="color:var(--red);">contact@chinamerchants.info</a>.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Open modal
+function openModal(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// Close modal
+function closeModal(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close when clicking the dark overlay background
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Smooth scroll for anchor links
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
